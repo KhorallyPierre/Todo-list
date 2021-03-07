@@ -7,8 +7,11 @@ const clearCompleted = document.querySelector('.clearCompleted')
 const countElement = document.querySelector('.countElement')
 let count = 0
 
-// initialize items to complete in the document
+
+
+// initialize the count element to start at 0
 countElement.innerText = count
+
 
 // create the function a function that adds an li to the ul
 function createTodoItem(e){
@@ -18,20 +21,18 @@ function createTodoItem(e){
   }
   const li = document.createElement('li')
   li.className = 'listItem'
-  // li.innerText = input.value
-  li.innerHTML = '<i class= "fas fa-times"></i>'
   li.innerText = input.value
-  // const a = document.createElement('a')
-  // a.className = 'x'
-
-
-  // li.appendChild(a)
+  li.innerHTML = "<i class></i>"
   list.appendChild(li)
+// here we are resetting the input to be empty once its value has been added to the list
   input.value = ''
+// here we are telling the count function to increase its value by one every time a new item is added to the list
   count++
+// here we are updating the count total from its previous value
   countElement.innerText = count
 
 }
+
 
 // cross out a single item
 function crossOutItem(e){
@@ -49,6 +50,7 @@ function crossOutItem(e){
   }
 }
 
+
 // clear all items
 function clearAll(e){
   while(list.firstChild){
@@ -59,22 +61,22 @@ function clearAll(e){
 }
 
 // remove a single item
-function removeItem(e){
-  if (e.target.tagName === 'i'){
-    list.removeChild(e.target.parentNode)
-    count--
-    countElement.innerText = count
-  }
+// function removeItem(e){
+//   if (e.target.tagName === 'i'){
+//     list.removeChild(e.target.parentNode)
+//     count--
+//     countElement.innerText = count
+//   }
 
-
-  countElement.innerText = count
-}
+//
+//   countElement.innerText = count
+// }
 
 // remove all completed items (they all have the class done)
 function removeCompletedItems(){
-  const completedItem = document.querySelectorAll('.done')
-  completedItem.forEach((comp) => {
-    list.removeChild(comp)
+  const completedItems = document.querySelectorAll('.done')
+  completedItems.forEach(listItem => {
+    list.removeChild(listItem)
   })
 }
 
